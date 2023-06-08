@@ -1,8 +1,7 @@
 #!/usr/bin/python3
-# Author - Godswill Kalu
 
 def magic_calculation(a, b, c):
-    """Match bytecode provided by Holberton School."""
+    """Compile bytecode"""
     if a < b:
         return (c)
     if c > b:
