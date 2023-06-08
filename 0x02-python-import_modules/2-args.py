@@ -4,7 +4,7 @@ if __name__ == '__main__':
     from sys import argv
 
     argc = len(argv) - 1
-    plural = 's' if argc > 1 else ''
+    plural = '' if argc == 1 else 's'
     punc = ':' if argc > 0 else '.'
 
     print("{} argument{}{}".format(argc, plural, punc))
