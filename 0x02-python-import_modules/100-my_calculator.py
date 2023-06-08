@@ -20,10 +20,10 @@ if __name__ == '__main__':
     b = int(argv[3])
 
     ops = {
-        "+": lambda a, b: print(f"{a} + {b} = {add(a, b)}"),
-        "-": lambda a, b: print(f"{a} - {b} = {sub(a, b)}"),
-        "*": lambda a, b: print(f"{a} * {b} = {mul(a, b)}"),
-        "/": lambda a, b: print(f"{a} / {b} = {div(a, b)}"),
+        "+": lambda a, b: print("{} + {} = {}".format(a, b, add(a, b))),
+        "-": lambda a, b: print("{} - {} = {}".format(a, b, sub(a, b))),
+        "*": lambda a, b: print("{} * {} = {}".format(a, b, mul(a, b))),
+        "/": lambda a, b: print("{} / {} = {}".format(a, b, div(a, b))),
     }
 
     ops.get(op)(a, b)

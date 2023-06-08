@@ -7,7 +7,7 @@ if __name__ == '__main__':
     plural = 's' if argc > 1 else ''
     punc = ':' if argc > 0 else '.'
 
-    print(f"{argc} argument{plural}{punc}")
+    print("{} argument{}{}".format(argc, plural, punc))
 
     idx = 1
     for arg in argv[1:]:
