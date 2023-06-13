@@ -3,23 +3,31 @@
 #include <stdlib.h>
 
 /**
- * add_nodeint - adds a new node to a listint_t list
- * @head: pointer to pointer of first node of listint_t list
- * @n: integer to be included in new node
- * Return: address of the new element or NULL if it fails
+ * reverse_linkedlist - reverse a linked list
+ *
+ * @head: head
+ *
+ * Return: head of the reversed linked list
  */
-listint_t *add_nodeint(listint_t **head, const int n)
+listint_t *reverse_linkedlist(listint_t *head)
 {
-    listint_t *new;
+    listint_t *prev, *node, *next;
 
-    new = malloc(sizeof(listint_t));
-    if (new == NULL)
-        return (NULL);
+    if (head == NULL)
+        return (head);
 
-    new->n = n;
-    new->next = *head;
-    *head = new;
-    return (new);
+    prev = NULL;
+    node = head;
+    next = head->next;
+    while (next != NULL)
+    {
+        node->next = prev;
+        prev = node;
+        node = next;
+        next = node->next;
+    }
+    node->next = prev;
+    return (node);
 }
 
 /**
@@ -31,29 +39,30 @@ listint_t *add_nodeint(listint_t **head, const int n)
  */
 int is_palindrome(listint_t **head)
 {
-    listint_t *head2, *current, *p1, *p2;
+    listint_t *slow, *fast;
 
-    head2 = NULL;
-    current = *head;
-
-    if (*head == NULL)
+    if (*head == NULL || (*head)->next == NULL)
         return (1);
 
-    while (current->next != NULL)
+    fast = *head, slow = *head;
+    while (fast->next != NULL && fast->next->next != NULL)
     {
-        add_nodeint(&head2, current->n);
-        current = current->next;
-    }
-    add_nodeint(&head2, current->n);
-
-    p1 = *head, p2 = head2;
-
-    while (p1 != NULL)
-    {
-        if (p1->n != p2->n)
-            return (free_listint(head2), 0);
-        p1 = p1->next, p2 = p2->next;
+        slow = slow->next;
+        fast = fast->next->next;
     }
 
-    return (free_listint(head2), 1);
+    fast = reverse_linkedlist(slow->next), slow = *head;
+
+    while (fast->next != NULL)
+    {
+        if (slow->n != fast->n)
+            return (0);
+        slow = slow->next;
+        fast = fast->next;
+    }
+
+    if (slow->n != fast->n)
+        return (0);
+
+    return (1);
 }
