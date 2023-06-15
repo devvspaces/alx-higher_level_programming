@@ -9,6 +9,10 @@ def roman_to_int(roman_string):
     :return: number
     :rtype: int
     """
+
+    if not str or type(roman_string) is not str:
+        return 0
+
     mapping = {
         "M": 1000,
         "C": 100,
@@ -40,6 +44,13 @@ def roman_to_int(roman_string):
 
 
 if __name__ == "__main__":
+    roman_number = ""
+    print("{} = {}".format(roman_number, roman_to_int(roman_number)))
+    roman_number = None
+    print("{} = {}".format(roman_number, roman_to_int(roman_number)))
+    roman_number = 2
+    print("{} = {}".format(roman_number, roman_to_int(roman_number)))
+
     roman_number = "X"
     print("{} = {}".format(roman_number, roman_to_int(roman_number)))
 
@@ -47,6 +58,9 @@ if __name__ == "__main__":
     print("{} = {}".format(roman_number, roman_to_int(roman_number)))
 
     roman_number = "CIX"
+    print("{} = {}".format(roman_number, roman_to_int(roman_number)))
+
+    roman_number = "MMCDXXI"
     print("{} = {}".format(roman_number, roman_to_int(roman_number)))
 
     roman_number = "LXXXVII"
