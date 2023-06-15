@@ -31,7 +31,7 @@ void print_python_bytes(PyObject *p)
     if ((int)(GET_SIZE(p)) < min)
         min = ((int)(GET_SIZE(p))) + 1;
     
-    printf("  first %d bytes: ", min);
+    printf("  first %d bytes:", min);
     for (idx = 0; idx < min; idx++)
         printf(" %02x", (unsigned char)(Bytes_AS_STRING(p))[idx]);
     printf("\n");
