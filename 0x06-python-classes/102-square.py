@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 
+"""Defining a square class"""
+
 
 class Square:
     """A Square class."""
@@ -20,6 +22,7 @@ class Square:
 
     @size.setter
     def size(self, value):
+        """test"""
         if not isinstance(value, int):
             raise TypeError("size must be an integer")
         elif value < 0:
@@ -27,22 +30,29 @@ class Square:
         self.__size = value
 
     def area(self):
+        """test"""
         return self.__size * self.__size
 
     def __eq__(self, other):
+        """test"""
         return self.area() == other.area()
 
     def __ne__(self, other):
+        """test"""
         return self.area() != other.area()
 
     def __lt__(self, other):
+        """test"""
         return self.area() < other.area()
 
     def __le__(self, other):
+        """test"""
         return self.area() <= other.area()
 
     def __gt__(self, other):
+        """test"""
         return self.area() > other.area()
 
     def __ge__(self, other):
+        """Compare the area of the square to another."""
         return self.area() >= other.area()

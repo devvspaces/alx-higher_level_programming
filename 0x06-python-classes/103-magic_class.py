@@ -1,4 +1,8 @@
 #!/usr/bin/python3
+
+"""Defining a square class"""
+
+
 import math
 
 
@@ -20,7 +24,9 @@ class MagicClass:
         self.__radius = radius
 
     def area(self):
+        """Get the current area of the circle."""
         return (self.__radius ** 2 * math.pi)
 
     def circumference(self):
+        """Get the current circumference of the circle."""
         return (2 * math.pi * self.__radius)

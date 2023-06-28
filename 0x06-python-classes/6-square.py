@@ -1,5 +1,8 @@
 #!/usr/bin/python3
 
+"""Defining a square class"""
+
+
 class Square:
     """A Square class."""
 
@@ -33,6 +36,7 @@ class Square:
 
     @position.setter
     def position(self, value):
+        """test"""
         if (not isinstance(value, tuple) or
                 len(value) != 2 or
                 not all(isinstance(num, int) for num in value) or

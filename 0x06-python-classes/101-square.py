@@ -1,5 +1,8 @@
 #!/usr/bin/python3
 
+"""Defining a square class"""
+
+
 class Square:
     """A Square class."""
 
@@ -20,6 +23,7 @@ class Square:
 
     @size.setter
     def size(self, value):
+        """test"""
         if not isinstance(value, int):
             raise TypeError("size must be an integer")
         elif value < 0:
@@ -33,6 +37,7 @@ class Square:
 
     @position.setter
     def position(self, value):
+        """test"""
         if (not isinstance(value, tuple) or
                 len(value) != 2 or
                 not all(isinstance(num, int) for num in value) or
@@ -57,4 +62,5 @@ class Square:
             print("")
 
     def __str__(self):
+        """test"""
         self.my_print()
