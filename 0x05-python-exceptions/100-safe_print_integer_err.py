@@ -7,7 +7,7 @@ def safe_print_integer(value):
         print("{:d}".format(value))
         return True
     except Exception as ne:
-        print("Exception: {}".format(str(ne)), file=sys.stderr)
+        print("Exception:", ne, file=sys.stderr)
     return False
 
 
