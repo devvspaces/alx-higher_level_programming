@@ -19,7 +19,7 @@ class Node:
 
     @property
     def data(self):
-        """Get/set the data of the Node."""
+        """Get the data of the Node."""
         return (self.__data)
 
     @data.setter
@@ -30,7 +30,7 @@ class Node:
 
     @property
     def next_node(self):
-        """Get/set the next_node of the Node."""
+        """Get the next_node of the Node."""
         return (self.__next_node)
 
     @next_node.setter
