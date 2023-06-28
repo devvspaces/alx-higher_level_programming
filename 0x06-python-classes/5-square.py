@@ -22,7 +22,14 @@ class Square:
 
     @size.setter
     def size(self, value):
-        """test"""
+        """
+        Set the size of the square.
+
+        :param value: The new size of the square.
+        :type value: int
+        :raises TypeError: _size must be an integer_
+        :raises ValueError: _size must be >= 0_
+        """
         if not isinstance(value, int):
             raise TypeError("size must be an integer")
         elif value < 0:
