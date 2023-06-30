@@ -3,8 +3,11 @@
 #include <stdio.h>
 
 /**
- * print_python_string - prints information about a python string
- * @p: pointer to the string object, checks to see it is string
+ * print_python_string - prints information
+ * about a python string
+ * 
+ * @p: pointer to the string object,
+ * checks to see it is string
  */
 void print_python_string(PyObject *p)
 {
