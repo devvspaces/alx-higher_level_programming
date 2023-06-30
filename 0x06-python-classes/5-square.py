@@ -13,7 +13,7 @@ class Square:
         :param size: The size of the new square.
         :type size: int
         """
-        self.__size = size
+        self.size = size
 
     @property
     def size(self):

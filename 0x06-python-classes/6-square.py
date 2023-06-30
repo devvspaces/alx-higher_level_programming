@@ -15,8 +15,8 @@ class Square:
         :param position: The position of the new square.
         :type position: tuple
         """
-        self.__size = size
-        self.__position = position
+        self.size = size
+        self.position = position
 
     @property
     def size(self):

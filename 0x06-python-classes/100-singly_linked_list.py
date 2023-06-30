@@ -15,8 +15,8 @@ class Node:
         :param next_node: The next node of the new Node, defaults to None
         :type next_node: Node, optional
         """
-        self.__data = data
-        self.__next_node = next_node
+        self.data = data
+        self.next_node = next_node
 
     @property
     def data(self):
