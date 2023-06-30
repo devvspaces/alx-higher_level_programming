@@ -1,0 +1,41 @@
+The ``tdd`` module
+======================
+
+Using ``add_integer``
+-------------------
+
+    >>> add_integer = __import__('0-add_integer').add_integer
+
+Now use it:
+
+    >>> add_integer(6, 1)
+    7
+
+    >>> add_integer(6, 1.7)
+    7
+
+    >>> add_integer(6.1, 2)
+    8
+
+    >>> add_integer(6, "1")
+    Traceback (most recent call last):
+        ...
+    TypeError: b must be an integer
+
+    >>> add_integer("6", 1)
+    Traceback (most recent call last):
+        ...
+    TypeError: a must be an integer
+
+    >>> add_integer("6", "1")
+    Traceback (most recent call last):
+        ...
+    TypeError: a must be an integer
+
+    >>> add_integer(6)
+    104
+
+    >>> add_integer(6, [1, 2, 3, 4])
+    Traceback (most recent call last):
+        ...
+    TypeError: b must be an integer
