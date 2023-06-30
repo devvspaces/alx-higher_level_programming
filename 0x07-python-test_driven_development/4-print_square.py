@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-print_square function
+This module contains a function that prints a square with the character #.
 """
 
 

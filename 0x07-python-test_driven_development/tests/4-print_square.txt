@@ -17,6 +17,10 @@ Running test for function docstring:
         >>> len(f) > 1
         True
 
+=================
+Start main tests
+=================
+
 Running test for no args:
     >>> print_square()
     Traceback (most recent call last):
@@ -55,31 +59,31 @@ Running test for positive ints:
     #
 
 Running test for negative ints:
-    >>> print_square(-1)
+    >>> print_square(-10)
     Traceback (most recent call last):
         ...
     ValueError: size must be >= 0
 
 Running test for non-number types:
-    >>> print_square((1,))
+    >>> print_square((5,))
     Traceback (most recent call last):
         ...
     TypeError: size must be an integer
-    >>> print_square("3")
+    >>> print_square("6")
     Traceback (most recent call last):
         ...
     TypeError: size must be an integer
-    >>> print_square(True)
+    >>> print_square(False)
     Traceback (most recent call last):
         ...
     TypeError: size must be an integer
 
-Running test for non-int number types:
-    >>> print_square(1.0)
+Running test for non-integer number types:
+    >>> print_square(7.0)
     Traceback (most recent call last):
         ...
     TypeError: size must be an integer
-    >>> print_square(-5.5)
+    >>> print_square(-8.5)
     Traceback (most recent call last):
         ...
     TypeError: size must be an integer

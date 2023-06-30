@@ -11,7 +11,7 @@ def matrix_divided(matrix, div):
     """
     new_matrix = []
 
-    if len(new_matrix) == 0:
+    if len(matrix) == 0:
         raise TypeError("matrix must be a matrix (list of lists) \
 of integers/floats")
 

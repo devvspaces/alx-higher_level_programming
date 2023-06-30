@@ -4,7 +4,18 @@ The ``tdd`` module
 Using ``matrix_divided``
 -------------------
 
+Importing the function from the module:
     >>> matrix_divided = __import__('2-matrix_divided').matrix_divided
+
+Testing for module docstring:
+    >>> m = __import__("2-matrix_divided").__doc__
+    >>> len(m) > 1
+    True
+
+Testing for function docstring:
+    >>> func = matrix_divided.__doc__
+    >>> len(func) > 1
+    True
 
 Now use it:
 
