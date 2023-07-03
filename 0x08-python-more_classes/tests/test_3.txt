@@ -1,0 +1,89 @@
+The ``3-rectangle.py`` module
+======================
+
+Using ``Rectangle``
+-------------------
+
+Importing Rectangle from the module:
+	>>> Rectangle = __import__("3-rectangle").Rectangle
+
+Running test for module docstring:
+    >>> len(Rectangle.__doc__) > 1
+    True
+    >>> m = Rectangle.__init__.__doc__
+    >>> len(m) > 1
+    True
+    >>> m = Rectangle.width.__doc__
+    >>> len(m) > 1
+    True
+    >>> m = Rectangle.height.__doc__
+    >>> len(m) > 1
+    True
+    >>> m = Rectangle.area.__doc__
+    >>> len(m) > 1
+    True
+    >>> m = Rectangle.perimeter.__doc__
+    >>> len(m) > 1
+    True
+    >>> m = Rectangle.__str__.__doc__
+    >>> len(m) > 1
+    True
+
+Running test for positive ints:
+    >>> r = Rectangle(3, 3)
+    >>> print(r)
+    ###
+    ###
+    ###
+    >>> print(repr(r)) # doctest: +ELLIPSIS
+    <3-rectangle.Rectangle object at ...>
+    >>> r = Rectangle(3, 5)
+    >>> print(str(r))
+    ###
+    ###
+    ###
+    ###
+    ###
+    >>> r = Rectangle()
+    >>> print(r)
+    <BLANKLINE>
+
+Running test for area:
+    >>> r = Rectangle(3, 3)
+    >>> r.area()
+    9
+    >>> r = Rectangle(3, 2)
+    >>> r.area()
+    6
+    >>> r = Rectangle(8, 7)
+    >>> r.area()
+    56
+
+Running test for perimeter:
+    >>> r = Rectangle(3, 3)
+    >>> r.perimeter()
+    12
+    >>> r = Rectangle(3, 2)
+    >>> r.perimeter()
+    10
+    >>> r = Rectangle(8, 7)
+    >>> r.perimeter()
+    30
+
+Running test for errors:
+    >>> r = Rectangle(3, -3)
+    Traceback (most recent call last):
+    ...
+    ValueError: height must be >= 0
+    >>> r = Rectangle(-3, 3)
+    Traceback (most recent call last):
+    ...
+    ValueError: width must be >= 0
+    >>> r = Rectangle(3, "3")
+    Traceback (most recent call last):
+    ...
+    TypeError: height must be an integer
+    >>> r = Rectangle("3", 3)
+    Traceback (most recent call last):
+    ...
+    TypeError: width must be an integer

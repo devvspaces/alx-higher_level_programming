@@ -1,0 +1,15 @@
+The ``0-rectangle.py`` module
+======================
+
+Using ``Rectangle``
+-------------------
+
+Importing Rectangle from the module:
+    >>> m = __import__("0-rectangle")
+	>>> Rectangle = m.Rectangle
+
+Running test for module docstring:
+    >>> len(m.__doc__) > 1
+    True
+    >>> len(Rectangle.__doc__) > 1
+    True

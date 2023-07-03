@@ -1,0 +1,50 @@
+The ``1-rectangle.py`` module
+======================
+
+Using ``Rectangle``
+-------------------
+
+Importing Rectangle from the module:
+    >>> m = __import__("1-rectangle")
+	>>> Rectangle = m.Rectangle
+
+Running test for module docstring:
+    >>> len(m.__doc__) > 1
+    True
+    >>> len(Rectangle.__doc__) > 1
+    True
+    >>> m = Rectangle.__init__.__doc__
+    >>> len(m) > 1
+    True
+    >>> m = Rectangle.width.__doc__
+    >>> len(m) > 1
+    True
+    >>> m = Rectangle.height.__doc__
+    >>> len(m) > 1
+    True
+
+Running test for positive ints:
+    >>> r = Rectangle(3, 3)
+    >>> print(r.__dict__)
+    {'_Rectangle__width': 3, '_Rectangle__height': 3}
+    >>> r = Rectangle()
+    >>> print(r.__dict__)
+    {'_Rectangle__width': 0, '_Rectangle__height': 0}
+
+Running test for errors:
+    >>> r = Rectangle(3, -3)
+    Traceback (most recent call last):
+    ...
+    ValueError: height must be >= 0
+    >>> r = Rectangle(-3, 3)
+    Traceback (most recent call last):
+    ...
+    ValueError: width must be >= 0
+    >>> r = Rectangle(3, "3")
+    Traceback (most recent call last):
+    ...
+    TypeError: height must be an integer
+    >>> r = Rectangle("3", 3)
+    Traceback (most recent call last):
+    ...
+    TypeError: width must be an integer
