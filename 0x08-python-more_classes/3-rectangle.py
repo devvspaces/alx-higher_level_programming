@@ -86,10 +86,13 @@ class Rectangle:
         Informal representation of this object
         """
         result = []
+
+        if self.width == 0 or self.height == 0:
+            return ""
+
         for _ in range(self.height):
             start = ""
             for _ in range(self.width):
                 start += "#"
             result.append(start)
         return "\n".join(result)
-
