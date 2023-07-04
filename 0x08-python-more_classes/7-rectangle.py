@@ -1,15 +1,21 @@
 #!/usr/bin/python3
-"""
-Rectangle class
-"""
+"""Defines a Rectangle class."""
 
 
 class Rectangle:
     """
-    Rectangle class
+    A class to represent a rectangle.
+
+    :param number_of_instances: number of instances
+    :type number_of_instances: int
+    :param print_symbol: symbol used for string representation
+    :type print_symbol: str
     """
 
-    def __init__(self, width=0, height=0) -> None:
+    number_of_instances = 0
+    print_symbol = "#"
+
+    def __init__(self, width=0, height=0):
         """
         Rectangle class init method
 
@@ -18,6 +24,7 @@ class Rectangle:
         :param height: height, defaults to 0
         :type height: int, optional
         """
+        self.__class__.number_of_instances += 1
         self.width = width
         self.height = height
 
@@ -93,7 +100,7 @@ class Rectangle:
         for _ in range(self.height):
             start = ""
             for _ in range(self.width):
-                start += "#"
+                start += str(self.print_symbol)
             result.append(start)
         return "\n".join(result)
 
@@ -102,3 +109,10 @@ class Rectangle:
         Formal representation of this object
         """
         return "Rectangle({}, {})".format(self.width, self.height)
+
+    def __del__(self):
+        """
+        Delete this object
+        """
+        self.__class__.number_of_instances -= 1
+        print("Bye rectangle...")

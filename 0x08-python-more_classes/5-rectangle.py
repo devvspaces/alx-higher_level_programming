@@ -102,3 +102,9 @@ class Rectangle:
         Formal representation of this object
         """
         return "Rectangle({}, {})".format(self.width, self.height)
+
+    def __del__(self):
+        """
+        Delete this object
+        """
+        print("Bye rectangle...")
