@@ -1,0 +1,30 @@
+Testing LockedClass:
+
+Importing LockedClass:
+
+>>> LockedClass = __import__('101-locked_class').LockedClass
+
+
+Testing:
+>>> lc = LockedClass()
+>>> lc.first_name = "John"
+>>> try:
+...     lc.last_name = "Snow"
+... except Exception as e:
+...     print("[{}] {}".format(e.__class__.__name__, e))
+[AttributeError] 'LockedClass' object has no attribute 'last_name'
+>>> try:
+...     lc.age = 89
+... except Exception as e:
+...     print("[{}] {}".format(e.__class__.__name__, e))
+[AttributeError] 'LockedClass' object has no attribute 'age'
+>>> print(lc.first_name)
+John
+>>> print(lc.__dict__)
+{'first_name': 'John'}
+>>> try:
+...     print(lc.__slots__)
+... except Exception as e:
+...     print("[{}] {}".format(e.__class__.__name__, e))
+[AttributeError] 'LockedClass' object has no attribute '__slots__'
+
