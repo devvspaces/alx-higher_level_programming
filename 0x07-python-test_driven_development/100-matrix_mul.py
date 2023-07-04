@@ -22,39 +22,48 @@ def matrix_mul(m_a, m_b):
     :return: new matrix
     """
 
-    if not isinstance(m_a, list):
+    if type(m_a) is not list:
         raise TypeError("m_a must be a list")
-
-    elif not isinstance(m_b, list):
+    if type(m_b) is not list:
         raise TypeError("m_b must be a list")
 
-    elif not all(isinstance(row, list) for row in m_a):
-        raise TypeError("m_a must be a list of lists")
+    for a in m_a:
+        if type(a) is not list:
+            raise TypeError("m_a must be a list of lists")
+    for a in m_b:
+        if type(a) is not list:
+            raise TypeError("m_b must be a list of lists")
 
-    elif not all(isinstance(row, list) for row in m_b):
-        raise TypeError("m_b must be a list of lists")
-
-    elif m_a == [] or m_a == [[]]:
+    if len(m_a) == 0:
         raise ValueError("m_a can't be empty")
-
-    elif m_b == [] or m_b == [[]]:
+    for a in m_a:
+        if len(a) == 0:
+            raise ValueError("m_a can't be empty")
+    if len(m_b) == 0:
         raise ValueError("m_b can't be empty")
+    for a in m_b:
+        if len(a) == 0:
+            raise ValueError("m_b can't be empty")
 
-    elif not all((isinstance(ele, int) or isinstance(ele, float))
-                 for ele in [x for row in m_a for x in row]):
-        raise TypeError("m_a should contain only integers or floats")
+    for a in m_a:
+        for b in a:
+            if type(b) not in [int, float]:
+                raise TypeError("m_a should contain only integers or floats")
+    for a in m_b:
+        for b in a:
+            if type(b) not in [int, float]:
+                raise TypeError("m_b should contain only integers or floats")
 
-    elif not all((isinstance(ele, int) or isinstance(ele, float))
-                 for ele in [x for row in m_b for x in row]):
-        raise TypeError("m_b should contain only integers or floats")
+    m_a_row = len(m_a[0])
+    m_b_row = len(m_b[0])
+    for a in m_a[1:]:
+        if (len(a) != m_a_row):
+            raise TypeError("each row of m_a must be of the same size")
+    for a in m_b[1:]:
+        if (len(a) != m_b_row):
+            raise TypeError("each row of m_b must be of the same size")
 
-    if not all(len(row) == len(m_a[0]) for row in m_a):
-        raise TypeError("each row of m_a must be of the same size")
-
-    if not all(len(row) == len(m_b[0]) for row in m_b):
-        raise TypeError("each row of m_b must be of the same size")
-
-    if len(m_a[0]) != len(m_b):
+    if len(m_b) != m_a_row:
         raise ValueError("m_a and m_b can't be multiplied")
 
     inverted_b = []
