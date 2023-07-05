@@ -6,6 +6,9 @@ LockedClass Module
 
 
 class LockedClass:
+    """
+    Locked Class
+    """
     def __setattr__(self, name, value):
         if name != "first_name":
             raise AttributeError(
