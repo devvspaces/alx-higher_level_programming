@@ -1,0 +1,38 @@
+The `2-is_same_class.py`` module
+======================
+
+Using ``is_same_class`` function from `2-is_same_class.py`` module:
+-------------------
+
+Importing Rectangle from the module:
+    >>> m = __import__("2-is_same_class")
+	>>> is_same_class = m.is_same_class
+
+Running test for docstring:
+    >>> len(m.__doc__) > 1
+    True
+    >>> len(is_same_class.__doc__) > 1
+    True
+
+>>> class MyClass1(object):
+...     pass
+...
+>>> class MyClass2(object):
+...     my_attr1 = 3
+...     def my_meth(self):
+...         pass
+...
+
+Test if function works:
+    >>> input = MyClass1()
+    >>> is_same_class(input, MyClass1)
+    True
+    >>> is_same_class(input, MyClass2)
+    False
+    >>> a = 1
+    >>> is_same_class(a, int)
+    True
+    >>> is_same_class(a, float)
+    False
+    >>> is_same_class(a, object)
+    False
