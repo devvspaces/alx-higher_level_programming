@@ -1,29 +1,22 @@
-The `100-my_int` module
+The `101-add_attribute` module
 ======================
 
-Using ``MyInt`` function from `100-my_int` module:
+Using ``add_attribute`` function from `101-add_attribute` module:
 -------------------
 
-Importing MyInt from the module:
-    >>> m = __import__("100-my_int")
-	>>> MyInt = m.MyInt
+Importing add_attribute from the module:
+    >>> m = __import__("101-add_attribute")
+	>>> add_attribute = m.add_attribute
 
 Running test for docstring:
     >>> len(m.__doc__) > 1
     True
-    >>> len(MyInt.__doc__) > 1
+    >>> len(add_attribute.__doc__) > 1
     True
-    >>> for attr in dir(MyInt):
-    ...     if not attr.startswith("__") and not attr.endswith("__"):
-    ...         func = getattr(MyInt, attr)
-    ...         if getattr(func, "__qualname__", None) != None:
-    ...             if len(func.__doc__) == 0:
-    ...                 raise Exception
-    ...
-
+    >>> len(m.validate.__doc__) > 1
 
 Tests:
-    >>> my_i = MyInt(3)
+    >>> my_i = add_attribute(3)
     >>> my_i
     3
     >>> print(my_i)
