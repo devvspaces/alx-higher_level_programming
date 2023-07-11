@@ -4,7 +4,7 @@ The ``1-my_list.py`` module
 Using ``lookup`` function from ``1-my_list.py`` module:
 -------------------
 
-Importing Rectangle from the module:
+Importing MyList from the module:
     >>> m = __import__("1-my_list")
 	>>> MyList = m.MyList
 

@@ -4,7 +4,7 @@ The `2-is_same_class.py`` module
 Using ``is_same_class`` function from `2-is_same_class.py`` module:
 -------------------
 
-Importing Rectangle from the module:
+Importing is_same_class from the module:
     >>> m = __import__("2-is_same_class")
 	>>> is_same_class = m.is_same_class
 

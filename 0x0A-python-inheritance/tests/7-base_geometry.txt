@@ -1,0 +1,43 @@
+The `7-base_geometry` module
+======================
+
+Using ``BaseGeometry`` function from `7-base_geometry` module:
+-------------------
+
+Importing BaseGeometry from the module:
+    >>> m = __import__("7-base_geometry")
+	>>> BaseGeometry = m.BaseGeometry
+
+Running test for docstring:
+    >>> len(m.__doc__) > 1
+    True
+    >>> len(BaseGeometry.__doc__) > 1
+    True
+    >>> for attr in dir(BaseGeometry):
+    ...     if not attr.startswith("__") and not attr.endswith("__"):
+    ...         func = getattr(BaseGeometry, attr)
+    ...         if getattr(func, "__qualname__", None) != None:
+    ...             if len(func.__doc__) == 0:
+    ...                 raise Exception
+    ...
+
+
+Tests:
+    >>> bg = BaseGeometry()
+    >>> bg.integer_validator("name", "John")
+    Traceback (most recent call last):
+    ...
+    TypeError: name must be an integer
+    >>> bg.integer_validator("age", 89)
+    >>> bg.integer_validator("distance", 89.5)
+    Traceback (most recent call last):
+    ...
+    TypeError: distance must be an integer
+    >>> bg.integer_validator("distance", 0)
+    Traceback (most recent call last):
+    ...
+    ValueError: distance must be greater than 0
+    >>> bg.integer_validator("distance", -89)
+    Traceback (most recent call last):
+    ...
+    ValueError: distance must be greater than 0

@@ -1,0 +1,25 @@
+The `3-is_kind_of_class.py`` module
+======================
+
+Using ``is_kind_of_class`` function from `3-is_kind_of_class.py`` module:
+-------------------
+
+Importing is_kind_of_class from the module:
+    >>> m = __import__("3-is_kind_of_class")
+	>>> is_kind_of_class = m.is_kind_of_class
+
+Running test for docstring:
+    >>> len(m.__doc__) > 1
+    True
+    >>> len(is_kind_of_class.__doc__) > 1
+    True
+
+
+Tests:
+    >>> a = 1
+    >>> is_kind_of_class(a, int)
+    True
+    >>> is_kind_of_class(a, float)
+    False
+    >>> is_kind_of_class(a, object)
+    True

@@ -1,0 +1,38 @@
+The `8-rectangle` module
+======================
+
+Using ``Rectangle`` function from `8-rectangle` module:
+-------------------
+
+Importing Rectangle from the module:
+    >>> m = __import__("8-rectangle")
+	>>> Rectangle = m.Rectangle
+
+Running test for docstring:
+    >>> len(m.__doc__) > 1
+    True
+    >>> len(Rectangle.__doc__) > 1
+    True
+    >>> for attr in dir(Rectangle):
+    ...     if not attr.startswith("__") and not attr.endswith("__"):
+    ...         func = getattr(Rectangle, attr)
+    ...         if getattr(func, "__qualname__", None) != None:
+    ...             if len(func.__doc__) == 0:
+    ...                 raise Exception
+    ...
+
+
+Tests:
+    >>> r = Rectangle(3, 5)
+    >>> r.width
+    Traceback (most recent call last):
+    ...
+    AttributeError: 'Rectangle' object has no attribute 'width'
+    >>> r.height
+    Traceback (most recent call last):
+    ...
+    AttributeError: 'Rectangle' object has no attribute 'height'
+    >>> r = Rectangle(3, True)
+    Traceback (most recent call last):
+    ...
+    TypeError: height must be an integer

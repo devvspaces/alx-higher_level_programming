@@ -1,0 +1,23 @@
+The `6-base_geometry`` module
+======================
+
+Using ``BaseGeometry`` function from `6-base_geometry`` module:
+-------------------
+
+Importing BaseGeometry from the module:
+    >>> m = __import__("6-base_geometry")
+	>>> BaseGeometry = m.BaseGeometry
+
+Running test for docstring:
+    >>> len(m.__doc__) > 1
+    True
+    >>> len(BaseGeometry.__doc__) > 1
+    True
+
+
+Tests:
+    >>> bg = BaseGeometry()
+    >>> bg.area()
+    Traceback (most recent call last):
+    ...
+    Exception: area() is not implemented

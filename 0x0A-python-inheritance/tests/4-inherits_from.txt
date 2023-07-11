@@ -1,0 +1,25 @@
+The `4-inherits_from.py`` module
+======================
+
+Using ``inherits_from`` function from `4-inherits_from.py`` module:
+-------------------
+
+Importing inherits_from from the module:
+    >>> m = __import__("4-inherits_from")
+	>>> inherits_from = m.inherits_from
+
+Running test for docstring:
+    >>> len(m.__doc__) > 1
+    True
+    >>> len(inherits_from.__doc__) > 1
+    True
+
+
+Tests:
+    >>> a = True
+    >>> inherits_from(a, int)
+    True
+    >>> inherits_from(a, bool)
+    False
+    >>> inherits_from(a, object)
+    True

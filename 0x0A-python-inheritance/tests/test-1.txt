@@ -4,7 +4,7 @@ The ``0-lookup.py`` module
 Using ``lookup`` function from ``0-lookup.py`` module:
 -------------------
 
-Importing Rectangle from the module:
+Importing BaseGeometry from the module:
     >>> m = __import__("0-lookup")
 	>>> lookup = m.lookup
 

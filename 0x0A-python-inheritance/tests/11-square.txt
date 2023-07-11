@@ -1,0 +1,30 @@
+The `11-square` module
+======================
+
+Using ``Square`` function from `11-square` module:
+-------------------
+
+Importing Square from the module:
+    >>> m = __import__("11-square")
+	>>> Square = m.Square
+
+Running test for docstring:
+    >>> len(m.__doc__) > 1
+    True
+    >>> len(Square.__doc__) > 1
+    True
+    >>> for attr in dir(Square):
+    ...     if not attr.startswith("__") and not attr.endswith("__"):
+    ...         func = getattr(Square, attr)
+    ...         if getattr(func, "__qualname__", None) != None:
+    ...             if len(func.__doc__) == 0:
+    ...                 raise Exception
+    ...
+
+
+Tests:
+    >>> r = Square(3)
+    >>> print(r)
+    [Square] 3/3
+    >>> r.area()
+    9
