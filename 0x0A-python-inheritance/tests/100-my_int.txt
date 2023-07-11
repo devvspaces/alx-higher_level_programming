@@ -15,13 +15,20 @@ Running test for docstring:
     True
     >>> len(m.validate.__doc__) > 1
 
+>>> class MyClass():
+...     pass
+...
+
 Tests:
-    >>> my_i = add_attribute(3)
-    >>> my_i
-    3
-    >>> print(my_i)
-    3
-    >>> my_i == 3
-    False
-    >>> my_i != 3
-    True
+    >>> mc = MyClass()
+    >>> add_attribute(mc, "name", "John")
+    >>> mc.name
+    'John'
+    >>> add_attribute(mc, "number", 89)
+    >>> mc.number
+    89
+    >>> a = "string"
+    >>> add_attribute(a, "name", "Bob")
+    Traceback (most recent call last):
+        ...
+    TypeError: can't add new attribute
