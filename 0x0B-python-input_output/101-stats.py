@@ -22,26 +22,26 @@ if __name__ == "__main__":
     count = 0
 
     try:
-        for line in sys.stdin:
+        for readline in sys.stdin:
             if count == 10:
                 print_stats(size, status_codes)
                 count = 1
             else:
                 count += 1
 
-            line = line.split()
+            readline = readline.split()
 
             try:
-                size += int(line[-1])
+                size += int(readline[-1])
             except (IndexError, ValueError):
                 pass
 
             try:
-                if line[-2] in valid_codes:
-                    if status_codes.get(line[-2], -1) == -1:
-                        status_codes[line[-2]] = 1
+                if readline[-2] in valid_codes:
+                    if status_codes.get(readline[-2], -1) == -1:
+                        status_codes[readline[-2]] = 1
                     else:
-                        status_codes[line[-2]] += 1
+                        status_codes[readline[-2]] += 1
             except IndexError:
                 pass
 
