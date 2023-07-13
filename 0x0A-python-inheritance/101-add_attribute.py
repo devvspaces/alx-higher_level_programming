@@ -11,6 +11,8 @@ def validate(obj):
     """
     if type(obj) in [tuple, str, int, frozenset]:
         raise TypeError("can't add new attribute")
+    if not hasattr(obj, "__dict__"):
+        raise TypeError("can't add new attribute")
 
 
 def add_attribute(obj, name, value):
