@@ -19,14 +19,8 @@ def add_attribute(obj, name, value):
     """
     Add new attribute to obj
     """
+    validate(obj)
     slots = getattr(obj, "__slots__", None)
-    if slots is None:
-        validate(obj)
-        if getattr(obj, name, None) is None:
-            raise TypeError("can't add new attribute")
-        setattr(obj, name, value)
-
-    if name not in slots:
+    if slots and name not in slots:
         raise TypeError("can't add new attribute")
-
     setattr(obj, name, value)
