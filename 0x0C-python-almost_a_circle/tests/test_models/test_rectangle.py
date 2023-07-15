@@ -224,6 +224,20 @@ class TestRectangle(unittest.TestCase):
         self.assertIsNot(computed[0], r1)
         self.assertIsNot(computed[1], r2)
 
+    def test_load_from_file_csv(self):
+        """Test Load from file csv
+        """
+        r1 = Rectangle(10, 7, 2, 8)
+        r2 = Rectangle(2, 4)
+        Rectangle.save_to_file_csv([r1, r2])
+        computed = Rectangle.load_from_file_csv()
+        self.assertEqual(str(computed[0]), str(r1))
+        self.assertEqual(str(computed[1]), str(r2))
+        self.assertNotEqual(computed[0], r1)
+        self.assertNotEqual(computed[1], r2)
+        self.assertIsNot(computed[0], r1)
+        self.assertIsNot(computed[1], r2)
+
     def tearDown(self) -> None:
         """Tear down
         """

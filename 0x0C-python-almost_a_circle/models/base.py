@@ -5,6 +5,8 @@ Base class module
 """
 
 import json
+import turtle
+import random
 
 
 class Base:
@@ -28,13 +30,25 @@ class Base:
             list_dictionaries = []
         return json.dumps(list_dictionaries)
 
-    @staticmethod
-    def to_csv_string(list_dictionaries):
+    @classmethod
+    def to_csv_string(cls, list_dictionaries):
         """CSV string representation of list_dictionaries
         """
         if not list_dictionaries:
             list_dictionaries = []
-        return ",".join(list_dictionaries)
+
+        result = ""
+
+        # Specify keys
+        keys = ["id", "width", "height", "x", "y"]
+        if cls.__name__ == "Square":
+            keys = ["id", "size", "x", "y"]
+
+        # Ensure they are added in the correct order
+        for _dict in list_dictionaries:
+            result += ",".join([str(_dict.get(key, 0)) for key in keys]) + "\n"
+
+        return result
 
     @classmethod
     def save_to_file(cls, list_objs):
@@ -124,4 +138,73 @@ class Base:
     def load_from_file_csv(cls):
         """Load instances from CSV file
         """
-        pass
+
+        instances = []
+        filename = cls.__name__ + ".csv"
+
+        # Try to read from file
+        try:
+            with open(filename) as f:
+                lines = [x.split(',') for x in f.readlines()]
+
+                # Specify keys
+                keys = ["id", "width", "height", "x", "y"]
+                if cls.__name__ == "Square":
+                    keys = ["id", "size", "x", "y"]
+
+                # Create instances
+                for row in lines:
+                    _dict = {k:  int(v) for k, v in zip(keys, row)}
+                    instances.append(cls.create(**_dict))
+        except FileNotFoundError:
+            pass
+
+        return instances
+
+    @staticmethod
+    def random_color():
+        chars = "abcdef0123456789"
+        return "#" + "".join(random.choices(chars, k=6))
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+
+        # maximize screen
+        screen = turtle.Screen()
+        screenTk = screen.getcanvas().winfo_toplevel()
+        screenTk.attributes("-zoom", 1)
+
+        canvwidth, canvheight = turtle.screensize()
+
+        def set_turtle():
+            turtle.hideturtle()
+            turtle.pensize(5)
+            turtle.penup()
+            turtle.goto(-canvwidth, canvheight)
+            turtle.pendown()
+
+        set_turtle()
+
+        for index, shape in enumerate(list_rectangles + list_squares):
+            turtle.color(Base.random_color())
+            turtle.title("Drawing shapes: {}/{}".format(index +
+                         1, len(list_rectangles + list_squares)))
+            turtle.penup()
+            turtle.fd(shape.x)
+            turtle.right(90)
+            turtle.fd(shape.y)
+            turtle.left(90)
+            turtle.pendown()
+            turtle.write(str(shape), font=("Verdana", 12, "normal"))
+            turtle.fd(shape.width)
+            turtle.rt(90)
+            turtle.fd(shape.height)
+            turtle.rt(90)
+            turtle.fd(shape.width)
+            turtle.rt(90)
+            turtle.fd(shape.height)
+            turtle.rt(90)
+            turtle.clear()
+            set_turtle()
+
+        turtle.exitonclick()
