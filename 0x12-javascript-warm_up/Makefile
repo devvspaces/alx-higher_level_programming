@@ -1,0 +1,3 @@
+
+mod:
+	chmod +x *.js
