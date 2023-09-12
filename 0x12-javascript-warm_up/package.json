@@ -9,6 +9,7 @@
     "semistandard": "*"
   },
   "scripts": {
-    "lint": "semistandard"
+    "lint": "semistandard",
+    "fix": "semistandard --fix"
   }
 }
