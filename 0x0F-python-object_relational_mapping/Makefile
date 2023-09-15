@@ -1,0 +1,2 @@
+mod:
+	chmod +x *.py
