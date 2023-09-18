@@ -3,7 +3,7 @@
 Select all states
 that contains an 'a' in the name from supplied db
 """
-import sys
+from sys import argv
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -11,14 +11,17 @@ from sqlalchemy.orm import sessionmaker
 from model_state import Base, State
 
 if __name__ == "__main__":
-    engine = create_engine('mysql+mysqldb://{}:{}@127.0.0.1/{}'.format(
-        sys.argv[1], sys.argv[2], sys.argv[3]), pool_pre_ping=True)
+    db_url = "mysql+mysqldb://{}:{}@localhost:3306/{}".format(
+        argv[1], argv[2], argv[3])
+    engine = create_engine(db_url, echo=True)
     Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    state = session.query(State).filter(State.name == sys.argv[4]).first()
-    if state:
-        print(state.id)
-    else:
-        print("Not found")
+    # state = State(name="Louisiana")
+    # session.add(state)
+
+    # session.query(State).filter(State.id == 2).update({'name': 'New Mexico'})
+
+    session.commit()
+    session.close()
