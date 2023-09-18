@@ -30,7 +30,7 @@ if __name__ == "__main__":
 
     for city, state in session.query(
         City, State
-    ).join(State).order_by(City.id).all():
+    ).filter(City.state_id==State.id).order_by(City.id).all():
         print("{}: ({}) {}".format(state.name, city.id, city.name))
 
     session.close()
