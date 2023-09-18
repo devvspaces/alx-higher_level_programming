@@ -20,7 +20,9 @@ if __name__ == "__main__":
     session = Session()
 
     for state in session.query(State)\
-        .options(joinedload(State.cities))\
+        .outerjoin(City)\
+        .options(subqueryload(State.cities))\
+        .order_by(City.id)\
             .all():
         print("{}: {}".format(state.id, state.name))
         for city in state.cities:
