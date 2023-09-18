@@ -17,21 +17,18 @@ class City(Base):
 
     id = Column(Integer, primary_key=True, autoincrement=True, nullable=False)
     name = Column(String(128), nullable=False)
-    state_id = Column(Integer, ForeignKey('states.id'))
-#     state = relationship('State', back_populates='cities')
+    state_id = Column(Integer, ForeignKey('states.id'), nullable=False)
 
-
-# State.cities = relationship('City', order_by=City.id, back_populates='state')
 
 if __name__ == "__main__":
-    db_url = "mysql+mysqldb://{}:{}@localhost:3306/{}".format(
+    db_url = "mysql+mysqldb://{}:{}@127.0.0.1:3306/{}".format(
         argv[1], argv[2], argv[3])
-    engine = create_engine(db_url, echo=True)
+    engine = create_engine(db_url)
     Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     session = Session()
-    
-    session.Que
 
-    session.commit()
+    for city, state in session.query(City, State).all():
+        print("{}: ({}) {}".format(state.name, city.id, city.name))
+
     session.close()
