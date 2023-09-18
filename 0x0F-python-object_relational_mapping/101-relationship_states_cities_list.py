@@ -6,7 +6,7 @@ City objects contained in the DB
 import sys
 
 from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker, subqueryload
+from sqlalchemy.orm import sessionmaker
 
 from relationship_city import City
 from relationship_state import Base, State
@@ -24,12 +24,10 @@ if __name__ == '__main__':
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    for state in session.query(State)\
-        .outerjoin(City)\
-        .options(subqueryload(State.cities))\
-        .order_by(City.id)\
-            .all():
+    states = session.query(State).outerjoin(
+        City).order_by(State.id, City.id).all()
+
+    for state in states:
         print("{}: {}".format(state.id, state.name))
         for city in state.cities:
             print("\t{}: {}".format(city.id, city.name))
-    session.close()
