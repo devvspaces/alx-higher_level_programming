@@ -14,7 +14,7 @@ def main():
     cur = db.cursor()
 
     cur.execute(
-        f"SELECT * FROM states WHERE name='{sys.argv[4]}' ORDER BY id ASC")
+        "SELECT * FROM states WHERE name='{}' ORDER BY id ASC".format(sys.argv[4]))
     rows = cur.fetchall()
     for row in rows:
         print(row)
