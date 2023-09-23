@@ -19,10 +19,14 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    rows = session.query(State).all()
-    for state in rows:
+    for state in session.query(State)\
+        .outerjoin(City)\
+        .options(selectinload(State.cities))\
+        .order_by(City.id)\
+            .all():
         print("{}: {}".format(state.id, state.name))
-        for city in state.cities:
-            print("    {}: {}".format(city.id, city.name))
+        if len(State.cities) != 0:
+            for city in state.cities:
+                print("\t{}: {}".format(city.id, city.name))
 
     session.close()

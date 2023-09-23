@@ -13,9 +13,10 @@ def main():
                          passwd=sys.argv[2], db=sys.argv[3])
     cur = db.cursor()
 
+    # Must be case sensitive
     cur.execute(
         "SELECT * FROM states WHERE name='{}' \
-ORDER BY id ASC".format(sys.argv[4]))
+ORDER BY id ASC COLLATE latin1_general_cs".format(sys.argv[4]))
     rows = cur.fetchall()
     for row in rows:
         print(row)
