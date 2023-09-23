@@ -15,8 +15,8 @@ def main():
 
     # Must be case sensitive
     cur.execute(
-        "SELECT * FROM states WHERE name='{}' \
-ORDER BY id ASC COLLATE latin1_general_cs".format(sys.argv[4]))
+        "SELECT * FROM states WHERE name LIKE '{}' \
+ORDER BY id ASC".format(sys.argv[4]))
     rows = cur.fetchall()
     for row in rows:
         print(row)
