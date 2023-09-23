@@ -19,7 +19,8 @@ def main():
 ORDER BY id ASC".format(sys.argv[4]))
     rows = cur.fetchall()
     for row in rows:
-        print(row)
+        if (row[1] == sys.argv[4]):
+            print(row)
 
     cur.close()
     db.close()
