@@ -1,5 +1,5 @@
 #!/usr/bin/node
-const fs = require("fs");
+const fs = require('fs');
 
 const handler = (err, data) => {
   if (err) {
@@ -9,4 +9,4 @@ const handler = (err, data) => {
   }
 };
 
-fs.readFile(process.argv[2], "utf-8", handler);
+fs.readFile(process.argv[2], 'utf-8', handler);
